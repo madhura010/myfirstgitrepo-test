@@ -4,9 +4,9 @@ Description in 1/2 lines
 Previous publication reference
 
 ### Docker details
-Docker image path:
-Dockerfile path: 
-Image tested on which servers?: 
+- Docker image path:
+- Dockerfile path: 
+- Image tested on which servers?: 
 
 
 ### Input details
