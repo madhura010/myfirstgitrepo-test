@@ -1,0 +1,23 @@
+{
+  "skill_name": "aganitha-uniprot-parser",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Get the UniProt domain architecture and AlphaFold-derived structural RSA for human hemoglobin beta (P68871).",
+      "expected_output": "A Markdown report for P68871 with its Globin feature, AlphaFold model provenance, and a numeric structural RSA value when the model is available.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "Read a two-column TSV of P00533, P68871, and P04637, then generate one combined domain report without RSA calculations.",
+      "expected_output": "A Markdown report with three resolved UniProt entries and feature tables, demonstrating first-column batch parsing and the --no-rsa path.",
+      "files": ["examples/accessions.tsv"]
+    },
+    {
+      "id": 3,
+      "prompt": "Look up a UniProt entry name (HBB_HUMAN) and return its FASTA sequence.",
+      "expected_output": "A valid FASTA record whose header and sequence correspond to the HBB_HUMAN UniProt entry.",
+      "files": []
+    }
+  ]
+}
