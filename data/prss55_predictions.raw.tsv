@@ -1,0 +1,9 @@
+seq_id	protein_name	window_idx	start_pos	end_pos	8mer_sequence	prob_cleavage	prediction
+sp|Q5J5C9|DB121_HUMAN	Beta-defensin 121	27	28	35	GRCRTTCK	0.8267	Cleavage ✓
+sp|Q6PDA7|SG11A_HUMAN	Sperm-associated antigen 11A	56	57	64	AVKRDLLP	0.9322	Cleavage ✓
+sp|Q6PDA7|SG11A_HUMAN	Sperm-associated antigen 11A	51	52	59	QLLRHAVK	0.9054	Cleavage ✓
+sp|Q6PDA7|SG11A_HUMAN	Sperm-associated antigen 11A	22	23	30	SQARHVNH	0.8335	Cleavage ✓
+sp|Q6PDA7|SG11A_HUMAN	Sperm-associated antigen 11A	36	37	44	GELRERAP	0.8179	Cleavage ✓
+sp|Q7Z7B8|DB128_HUMAN	Beta-defensin 128	29	30	37	GYCRKKCK	0.8434	Cleavage ✓
+sp|Q96PH6|DB118_HUMAN	Defensin beta 118	84	85	92	LTVRFTTD	0.9131	Cleavage ✓
+sp|Q96PH6|DB118_HUMAN	Defensin beta 118	60	61	68	DHRRVPAT	0.8838	Cleavage ✓

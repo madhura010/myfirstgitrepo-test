@@ -1,0 +1,10 @@
+{
+  "version": 1,
+  "skills": {
+    "aganitha-uniprot-parser": {
+      "source": "/Users/madhura/trial-skills/skills/aganitha-uniprot-parser",
+      "sourceType": "local",
+      "computedHash": "a88a535b77a36668bbf30f516c4203691e9cc3d6fe5b484166aa41161875c675"
+    }
+  }
+}

@@ -1,0 +1,67 @@
+{
+  "version": 1,
+  "skills": {
+    "aganitha-find-skill": {
+      "source": "git@github.com:aganitha/agent-skills.git",
+      "sourceUrl": "git@github.com:aganitha/agent-skills.git",
+      "sourceType": "git",
+      "skillPath": "skills/aganitha-find-skill/SKILL.md",
+      "computedHash": "d2ddef9a6c3d4282e2726e7e7b17a122fda6ec922cdc99232c0e8d0fb7a73f00"
+    },
+    "aganitha-handoff": {
+      "source": "git@github.com:aganitha/agent-skills.git",
+      "sourceUrl": "git@github.com:aganitha/agent-skills.git",
+      "sourceType": "git",
+      "skillPath": "skills/aganitha-handoff/SKILL.md",
+      "computedHash": "e17c00b8bc1a561ba7a09333a26f2a3825e9d56ceb4f26ed6f1305b3b296fbe7"
+    },
+    "aganitha-install-pack": {
+      "source": "git@github.com:aganitha/agent-skills.git",
+      "sourceUrl": "git@github.com:aganitha/agent-skills.git",
+      "sourceType": "git",
+      "skillPath": "skills/aganitha-install-pack/SKILL.md",
+      "computedHash": "e849131c594636d9245009fb042970ccc3be19bc451530c57342e10851e6cc4a"
+    },
+    "aganitha-pickup": {
+      "source": "git@github.com:aganitha/agent-skills.git",
+      "sourceUrl": "git@github.com:aganitha/agent-skills.git",
+      "sourceType": "git",
+      "skillPath": "skills/aganitha-pickup/SKILL.md",
+      "computedHash": "021abb1ab460105ffc7b0e2ce057442eef85fdced2904358ca3295c53510c9ed"
+    },
+    "aganitha-publish-skill": {
+      "source": "git@github.com:aganitha/agent-skills.git",
+      "sourceUrl": "git@github.com:aganitha/agent-skills.git",
+      "sourceType": "git",
+      "skillPath": "skills/aganitha-publish-skill/SKILL.md",
+      "computedHash": "4ebb2354e45c2146592fd8bfd02f1cb870caee658adaee5a644150d8f866c714"
+    },
+    "aganitha-role": {
+      "source": "git@github.com:aganitha/agent-skills.git",
+      "sourceUrl": "git@github.com:aganitha/agent-skills.git",
+      "sourceType": "git",
+      "skillPath": "skills/aganitha-role/SKILL.md",
+      "computedHash": "0552991b1ef0364c68f88938a996d2f4e7a78d8ec6b348568020a2984105f530"
+    },
+    "aganitha-roles-setup": {
+      "source": "git@github.com:aganitha/agent-skills.git",
+      "sourceUrl": "git@github.com:aganitha/agent-skills.git",
+      "sourceType": "git",
+      "skillPath": "skills/aganitha-roles-setup/SKILL.md",
+      "computedHash": "d17b4edf70b47679e0c22308166b5067467c943f6294e3695d84f56f1e308ef9"
+    },
+    "scholar-search": {
+      "source": "git@github.com:aganitha/agent-skills.git",
+      "sourceUrl": "git@github.com:aganitha/agent-skills.git",
+      "sourceType": "git",
+      "skillPath": "skills/scholar-search/SKILL.md",
+      "computedHash": "8e7ea255960f89cc15ab3b86ab1d745688857b260a7f5fceefdc5a1caf7e8933"
+    },
+    "skill-creator": {
+      "source": "anthropics/skills",
+      "sourceType": "github",
+      "skillPath": "skills/skill-creator/SKILL.md",
+      "computedHash": "5ea13a6d9f0d4bb694405d79acd00cadec0d21bb138c4dd10fcf3c500cb835c2"
+    }
+  }
+}

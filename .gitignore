@@ -1,0 +1,5 @@
+CLAUDE.local.md
+.roles/active.md
+.vendor/
+.DS_Store
+__pycache__/

@@ -1,0 +1,49 @@
+{
+  "installs": {
+    "pack:basic-skills:github.com/aganitha/agent-skills": {
+      "args": [],
+      "installed_at": "2026-07-31T17:58:23+0530",
+      "kind": "pack",
+      "name": "basic-skills",
+      "source": "git@github.com:aganitha/agent-skills.git",
+      "updated_at": "2026-07-31T18:14:49+0530"
+    },
+    "pack:google-scholar-search:github.com/aganitha/agent-skills": {
+      "args": [],
+      "installed_at": "2026-07-31T18:01:20+0530",
+      "kind": "pack",
+      "name": "google-scholar-search",
+      "source": "git@github.com:aganitha/agent-skills.git",
+      "updated_at": "2026-07-31T18:01:20+0530"
+    },
+    "pack:roles:github.com/aganitha/agent-skills": {
+      "args": [
+        "g"
+      ],
+      "installed_at": "2026-08-04T19:45:26+0530",
+      "kind": "pack",
+      "name": "roles",
+      "source": "git@github.com:aganitha/agent-skills.git",
+      "updated_at": "2026-08-04T19:49:50+0530"
+    },
+    "skill:aganitha-find-skill:github.com/aganitha/agent-skills": {
+      "args": [],
+      "installed_at": "2026-07-31T18:06:42+0530",
+      "kind": "skill",
+      "name": "aganitha-find-skill",
+      "repo": "git@github.com:aganitha/agent-skills.git",
+      "source": "git@github.com:aganitha/agent-skills.git",
+      "updated_at": "2026-07-31T18:06:42+0530"
+    },
+    "skill:aganitha-handoff:github.com/aganitha/agent-skills": {
+      "args": [],
+      "installed_at": "2026-07-31T18:13:25+0530",
+      "kind": "skill",
+      "name": "aganitha-handoff",
+      "repo": "git@github.com:aganitha/agent-skills.git",
+      "source": "git@github.com:aganitha/agent-skills.git",
+      "updated_at": "2026-07-31T18:13:25+0530"
+    }
+  },
+  "schema_version": 1
+}

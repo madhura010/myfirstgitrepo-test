@@ -1,0 +1,1692 @@
+{
+  "annotationScore": 3.0,
+  "comments": [
+    {
+      "commentType": "FUNCTION",
+      "texts": [
+        {
+          "evidences": [
+            {
+              "evidenceCode": "ECO:0000250",
+              "id": "Q8VBV2",
+              "source": "UniProtKB"
+            }
+          ],
+          "value": "Has antimicrobial activity against E.coli (By similarity). Plays a role in the defense response in the male reproductive tract, contributing to sperm maturation, storage and protection (By similarity)"
+        }
+      ]
+    },
+    {
+      "commentType": "SUBCELLULAR LOCATION",
+      "subcellularLocations": [
+        {
+          "location": {
+            "evidences": [
+              {
+                "evidenceCode": "ECO:0000305"
+              }
+            ],
+            "id": "SL-0243",
+            "value": "Secreted"
+          }
+        }
+      ]
+    },
+    {
+      "commentType": "ALTERNATIVE PRODUCTS",
+      "events": [
+        "Alternative splicing"
+      ],
+      "isoforms": [
+        {
+          "isoformIds": [
+            "Q6PDA7-1"
+          ],
+          "isoformSequenceStatus": "Displayed",
+          "name": {
+            "value": "1"
+          },
+          "synonyms": [
+            {
+              "value": "HE2 alpha1"
+            }
+          ]
+        },
+        {
+          "isoformIds": [
+            "Q6PDA7-2"
+          ],
+          "isoformSequenceStatus": "Described",
+          "name": {
+            "value": "2"
+          },
+          "sequenceIds": [
+            "VSP_030220"
+          ],
+          "synonyms": [
+            {
+              "value": "EP2G"
+            },
+            {
+              "value": "HE2 beta2"
+            }
+          ]
+        },
+        {
+          "isoformIds": [
+            "Q6PDA7-3"
+          ],
+          "isoformSequenceStatus": "Described",
+          "name": {
+            "value": "3"
+          },
+          "sequenceIds": [
+            "VSP_030221"
+          ],
+          "synonyms": [
+            {
+              "value": "EP2H"
+            },
+            {
+              "value": "HE2 gamma1"
+            }
+          ]
+        },
+        {
+          "isoformIds": [
+            "Q6PDA7-4"
+          ],
+          "isoformSequenceStatus": "Described",
+          "name": {
+            "value": "4"
+          },
+          "sequenceIds": [
+            "VSP_030222",
+            "VSP_030223"
+          ],
+          "synonyms": [
+            {
+              "value": "EP2I"
+            },
+            {
+              "value": "HE2 gamma2"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "commentType": "SIMILARITY",
+      "texts": [
+        {
+          "evidences": [
+            {
+              "evidenceCode": "ECO:0000305"
+            }
+          ],
+          "value": "Belongs to the SPAG11 family"
+        }
+      ]
+    },
+    {
+      "commentType": "SEQUENCE CAUTION",
+      "evidences": [
+        {
+          "evidenceCode": "ECO:0000305"
+        }
+      ],
+      "note": "Truncated C-terminus.",
+      "sequence": "AC130365",
+      "sequenceCautionType": "Erroneous termination"
+    }
+  ],
+  "entryAudit": {
+    "entryVersion": 148,
+    "firstPublicDate": "2008-01-15",
+    "lastAnnotationUpdateDate": "2026-06-10",
+    "lastSequenceUpdateDate": "2008-01-15",
+    "sequenceVersion": 3
+  },
+  "entryType": "UniProtKB reviewed (Swiss-Prot)",
+  "extraAttributes": {
+    "countByCommentType": {
+      "ALTERNATIVE PRODUCTS": 4,
+      "FUNCTION": 1,
+      "SEQUENCE CAUTION": 1,
+      "SIMILARITY": 1,
+      "SUBCELLULAR LOCATION": 1
+    },
+    "countByFeatureType": {
+      "Alternative sequence": 4,
+      "Chain": 1,
+      "Glycosylation": 1,
+      "Natural variant": 1,
+      "Sequence conflict": 3,
+      "Signal": 1
+    },
+    "uniParcId": "UPI0000E447FD"
+  },
+  "features": [
+    {
+      "description": "",
+      "evidences": [
+        {
+          "evidenceCode": "ECO:0000255"
+        }
+      ],
+      "location": {
+        "end": {
+          "modifier": "EXACT",
+          "value": 25
+        },
+        "start": {
+          "modifier": "EXACT",
+          "value": 1
+        }
+      },
+      "type": "Signal"
+    },
+    {
+      "description": "Sperm-associated antigen 11A",
+      "featureId": "PRO_0000314165",
+      "location": {
+        "end": {
+          "modifier": "EXACT",
+          "value": 123
+        },
+        "start": {
+          "modifier": "EXACT",
+          "value": 26
+        }
+      },
+      "type": "Chain"
+    },
+    {
+      "description": "N-linked (GlcNAc...) asparagine",
+      "evidences": [
+        {
+          "evidenceCode": "ECO:0000255"
+        }
+      ],
+      "featureId": "",
+      "location": {
+        "end": {
+          "modifier": "EXACT",
+          "value": 29
+        },
+        "start": {
+          "modifier": "EXACT",
+          "value": 29
+        }
+      },
+      "type": "Glycosylation"
+    },
+    {
+      "alternativeSequence": {
+        "alternativeSequences": [
+          "GDVPLGIRNTICHMQQGICRLFFCHSGTGQQHRQRCG"
+        ],
+        "originalSequence": "VHISHQEARGPSFKICVGFLGPRWARGCSTGNEKYHLPYAARDLQTFFLPFW"
+      },
+      "description": "in isoform 2",
+      "evidences": [
+        {
+          "evidenceCode": "ECO:0000303",
+          "id": "10698202",
+          "source": "PubMed"
+        }
+      ],
+      "featureId": "VSP_030220",
+      "location": {
+        "end": {
+          "modifier": "EXACT",
+          "value": 123
+        },
+        "start": {
+          "modifier": "EXACT",
+          "value": 72
+        }
+      },
+      "type": "Alternative sequence"
+    },
+    {
+      "alternativeSequence": {
+        "alternativeSequences": [
+          "GTGQQHRQRCG"
+        ],
+        "originalSequence": "VHISHQEARGPSFKICVGFLGPRWARGCSTGNEKYHLPYAARDLQTFFLPFW"
+      },
+      "description": "in isoform 3",
+      "evidences": [
+        {
+          "evidenceCode": "ECO:0000303",
+          "id": "10698202",
+          "source": "PubMed"
+        }
+      ],
+      "featureId": "VSP_030221",
+      "location": {
+        "end": {
+          "modifier": "EXACT",
+          "value": 123
+        },
+        "start": {
+          "modifier": "EXACT",
+          "value": 72
+        }
+      },
+      "type": "Alternative sequence"
+    },
+    {
+      "alternativeSequence": {
+        "alternativeSequences": [
+          "EMK"
+        ],
+        "originalSequence": "VHI"
+      },
+      "description": "in isoform 4",
+      "evidences": [
+        {
+          "evidenceCode": "ECO:0000303",
+          "id": "10698202",
+          "source": "PubMed"
+        }
+      ],
+      "featureId": "VSP_030222",
+      "location": {
+        "end": {
+          "modifier": "EXACT",
+          "value": 74
+        },
+        "start": {
+          "modifier": "EXACT",
+          "value": 72
+        }
+      },
+      "type": "Alternative sequence"
+    },
+    {
+      "alternativeSequence": {},
+      "description": "in isoform 4",
+      "evidences": [
+        {
+          "evidenceCode": "ECO:0000303",
+          "id": "10698202",
+          "source": "PubMed"
+        }
+      ],
+      "featureId": "VSP_030223",
+      "location": {
+        "end": {
+          "modifier": "EXACT",
+          "value": 123
+        },
+        "start": {
+          "modifier": "EXACT",
+          "value": 75
+        }
+      },
+      "type": "Alternative sequence"
+    },
+    {
+      "alternativeSequence": {
+        "alternativeSequences": [
+          "W"
+        ],
+        "originalSequence": "R"
+      },
+      "description": "in Ref. 4; AAH58833",
+      "evidences": [
+        {
+          "evidenceCode": "ECO:0000305"
+        }
+      ],
+      "location": {
+        "end": {
+          "modifier": "EXACT",
+          "value": 60
+        },
+        "start": {
+          "modifier": "EXACT",
+          "value": 60
+        }
+      },
+      "type": "Sequence conflict"
+    },
+    {
+      "alternativeSequence": {
+        "alternativeSequences": [
+          "M"
+        ],
+        "originalSequence": "I"
+      },
+      "description": "in dbSNP:rs3177011",
+      "evidences": [
+        {
+          "evidenceCode": "ECO:0000305"
+        }
+      ],
+      "featureCrossReferences": [
+        {
+          "database": "dbSNP",
+          "id": "rs3177011"
+        }
+      ],
+      "featureId": "VAR_082918",
+      "location": {
+        "end": {
+          "modifier": "EXACT",
+          "value": 78
+        },
+        "sequence": "Q6PDA7-2",
+        "start": {
+          "modifier": "EXACT",
+          "value": 78
+        }
+      },
+      "type": "Natural variant"
+    },
+    {
+      "alternativeSequence": {
+        "alternativeSequences": [
+          "P"
+        ],
+        "originalSequence": "L"
+      },
+      "description": "in Ref. 1; AAF37188 and 2; AAG21884",
+      "evidences": [
+        {
+          "evidenceCode": "ECO:0000305"
+        }
+      ],
+      "location": {
+        "end": {
+          "modifier": "EXACT",
+          "value": 76
+        },
+        "sequence": "Q6PDA7-2",
+        "start": {
+          "modifier": "EXACT",
+          "value": 76
+        }
+      },
+      "type": "Sequence conflict"
+    },
+    {
+      "alternativeSequence": {
+        "alternativeSequences": [
+          "R"
+        ],
+        "originalSequence": "H"
+      },
+      "description": "in Ref. 1; AAF37188 and 2; AAG21884",
+      "evidences": [
+        {
+          "evidenceCode": "ECO:0000305"
+        }
+      ],
+      "location": {
+        "end": {
+          "modifier": "EXACT",
+          "value": 84
+        },
+        "sequence": "Q6PDA7-2",
+        "start": {
+          "modifier": "EXACT",
+          "value": 84
+        }
+      },
+      "type": "Sequence conflict"
+    }
+  ],
+  "genes": [
+    {
+      "geneName": {
+        "evidences": [
+          {
+            "evidenceCode": "ECO:0000312",
+            "id": "HGNC:33342",
+            "source": "HGNC"
+          }
+        ],
+        "value": "SPAG11A"
+      },
+      "synonyms": [
+        {
+          "evidences": [
+            {
+              "evidenceCode": "ECO:0000250",
+              "id": "Q8K4N2",
+              "source": "UniProtKB"
+            }
+          ],
+          "value": "BIN1B"
+        },
+        {
+          "evidences": [
+            {
+              "evidenceCode": "ECO:0000303",
+              "id": "11259252",
+              "source": "PubMed"
+            }
+          ],
+          "value": "EP2"
+        },
+        {
+          "evidences": [
+            {
+              "evidenceCode": "ECO:0000303",
+              "id": "10698202",
+              "source": "PubMed"
+            }
+          ],
+          "value": "HE2"
+        }
+      ]
+    }
+  ],
+  "keywords": [
+    {
+      "category": "Coding sequence diversity",
+      "id": "KW-0025",
+      "name": "Alternative splicing"
+    },
+    {
+      "category": "Molecular function",
+      "id": "KW-0044",
+      "name": "Antibiotic"
+    },
+    {
+      "category": "Molecular function",
+      "id": "KW-0929",
+      "name": "Antimicrobial"
+    },
+    {
+      "category": "Molecular function",
+      "id": "KW-0211",
+      "name": "Defensin"
+    },
+    {
+      "category": "PTM",
+      "id": "KW-0325",
+      "name": "Glycoprotein"
+    },
+    {
+      "category": "Technical term",
+      "id": "KW-1267",
+      "name": "Proteomics identification"
+    },
+    {
+      "category": "Technical term",
+      "id": "KW-1185",
+      "name": "Reference proteome"
+    },
+    {
+      "category": "Cellular component",
+      "id": "KW-0964",
+      "name": "Secreted"
+    },
+    {
+      "category": "Domain",
+      "id": "KW-0732",
+      "name": "Signal"
+    }
+  ],
+  "organism": {
+    "commonName": "Human",
+    "lineage": [
+      "Eukaryota",
+      "Metazoa",
+      "Chordata",
+      "Craniata",
+      "Vertebrata",
+      "Euteleostomi",
+      "Mammalia",
+      "Eutheria",
+      "Euarchontoglires",
+      "Primates",
+      "Haplorrhini",
+      "Catarrhini",
+      "Hominidae",
+      "Homo"
+    ],
+    "scientificName": "Homo sapiens",
+    "taxonId": 9606
+  },
+  "primaryAccession": "Q6PDA7",
+  "proteinDescription": {
+    "alternativeNames": [
+      {
+        "fullName": {
+          "evidences": [
+            {
+              "evidenceCode": "ECO:0000250",
+              "id": "Q8VBV2",
+              "source": "UniProtKB"
+            }
+          ],
+          "value": "Antimicrobial-like protein Bin-1b"
+        }
+      },
+      {
+        "fullName": {
+          "evidences": [
+            {
+              "evidenceCode": "ECO:0000303",
+              "id": "10698202",
+              "source": "PubMed"
+            }
+          ],
+          "value": "Human epididymis-specific protein 2"
+        },
+        "shortNames": [
+          {
+            "evidences": [
+              {
+                "evidenceCode": "ECO:0000303",
+                "id": "10698202",
+                "source": "PubMed"
+              }
+            ],
+            "value": "He2"
+          }
+        ]
+      },
+      {
+        "fullName": {
+          "evidences": [
+            {
+              "evidenceCode": "ECO:0000303",
+              "id": "11259252",
+              "source": "PubMed"
+            }
+          ],
+          "value": "Protein EP2"
+        }
+      },
+      {
+        "fullName": {
+          "value": "Sperm antigen HE2"
+        }
+      }
+    ],
+    "flag": "Precursor",
+    "recommendedName": {
+      "fullName": {
+        "evidences": [
+          {
+            "evidenceCode": "ECO:0000312",
+            "id": "HGNC:33342",
+            "source": "HGNC"
+          }
+        ],
+        "value": "Sperm-associated antigen 11A"
+      }
+    }
+  },
+  "proteinExistence": "1: Evidence at protein level",
+  "references": [
+    {
+      "citation": {
+        "authors": [
+          "Hamil K.G.",
+          "Sivashanmugam P.",
+          "Richardson R.T.",
+          "Grossman G.",
+          "Ruben S.M.",
+          "Mohler J.L.",
+          "Petrusz P.",
+          "O'Rand M.G.",
+          "French F.S.",
+          "Hall S.H."
+        ],
+        "citationCrossReferences": [
+          {
+            "database": "PubMed",
+            "id": "10698202"
+          },
+          {
+            "database": "DOI",
+            "id": "10.1210/endo.141.3.7389"
+          }
+        ],
+        "citationType": "journal article",
+        "firstPage": "1245",
+        "id": "10698202",
+        "journal": "Endocrinology",
+        "lastPage": "1253",
+        "publicationDate": "2000",
+        "title": "HE2 beta and HE2 gamma, new members of an epididymis-specific family of androgen-regulated proteins in the human.",
+        "volume": "141"
+      },
+      "referenceNumber": 1,
+      "referencePositions": [
+        "NUCLEOTIDE SEQUENCE [MRNA] (ISOFORMS 2 AND 3)",
+        "NUCLEOTIDE SEQUENCE [MRNA] OF 22-123 (ISOFORM 4)",
+        "NUCLEOTIDE SEQUENCE [MRNA] OF 34-103 (ISOFORM 1)"
+      ]
+    },
+    {
+      "citation": {
+        "authors": [
+          "Frohlich O.",
+          "Po C.",
+          "Young L.G."
+        ],
+        "citationCrossReferences": [
+          {
+            "database": "PubMed",
+            "id": "11259252"
+          },
+          {
+            "database": "DOI",
+            "id": "10.1095/biolreprod64.4.1072"
+          }
+        ],
+        "citationType": "journal article",
+        "firstPage": "1072",
+        "id": "11259252",
+        "journal": "Biol. Reprod.",
+        "lastPage": "1079",
+        "publicationDate": "2001",
+        "title": "Organization of the human gene encoding the epididymis-specific EP2 protein variants and its relationship to defensin genes.",
+        "volume": "64"
+      },
+      "referenceNumber": 2,
+      "referencePositions": [
+        "NUCLEOTIDE SEQUENCE [GENOMIC DNA] (ISOFORMS 2 AND 3)",
+        "NUCLEOTIDE SEQUENCE [GENOMIC DNA] OF 22-123 (ISOFORM 4)"
+      ]
+    },
+    {
+      "citation": {
+        "authors": [
+          "Nusbaum C.",
+          "Mikkelsen T.S.",
+          "Zody M.C.",
+          "Asakawa S.",
+          "Taudien S.",
+          "Garber M.",
+          "Kodira C.D.",
+          "Schueler M.G.",
+          "Shimizu A.",
+          "Whittaker C.A.",
+          "Chang J.L.",
+          "Cuomo C.A.",
+          "Dewar K.",
+          "FitzGerald M.G.",
+          "Yang X.",
+          "Allen N.R.",
+          "Anderson S.",
+          "Asakawa T.",
+          "Blechschmidt K.",
+          "Bloom T.",
+          "Borowsky M.L.",
+          "Butler J.",
+          "Cook A.",
+          "Corum B.",
+          "DeArellano K.",
+          "DeCaprio D.",
+          "Dooley K.T.",
+          "Dorris L. III",
+          "Engels R.",
+          "Gloeckner G.",
+          "Hafez N.",
+          "Hagopian D.S.",
+          "Hall J.L.",
+          "Ishikawa S.K.",
+          "Jaffe D.B.",
+          "Kamat A.",
+          "Kudoh J.",
+          "Lehmann R.",
+          "Lokitsang T.",
+          "Macdonald P.",
+          "Major J.E.",
+          "Matthews C.D.",
+          "Mauceli E.",
+          "Menzel U.",
+          "Mihalev A.H.",
+          "Minoshima S.",
+          "Murayama Y.",
+          "Naylor J.W.",
+          "Nicol R.",
+          "Nguyen C.",
+          "O'Leary S.B.",
+          "O'Neill K.",
+          "Parker S.C.J.",
+          "Polley A.",
+          "Raymond C.K.",
+          "Reichwald K.",
+          "Rodriguez J.",
+          "Sasaki T.",
+          "Schilhabel M.",
+          "Siddiqui R.",
+          "Smith C.L.",
+          "Sneddon T.P.",
+          "Talamas J.A.",
+          "Tenzin P.",
+          "Topham K.",
+          "Venkataraman V.",
+          "Wen G.",
+          "Yamazaki S.",
+          "Young S.K.",
+          "Zeng Q.",
+          "Zimmer A.R.",
+          "Rosenthal A.",
+          "Birren B.W.",
+          "Platzer M.",
+          "Shimizu N.",
+          "Lander E.S."
+        ],
+        "citationCrossReferences": [
+          {
+            "database": "PubMed",
+            "id": "16421571"
+          },
+          {
+            "database": "DOI",
+            "id": "10.1038/nature04406"
+          }
+        ],
+        "citationType": "journal article",
+        "firstPage": "331",
+        "id": "16421571",
+        "journal": "Nature",
+        "lastPage": "335",
+        "publicationDate": "2006",
+        "title": "DNA sequence and analysis of human chromosome 8.",
+        "volume": "439"
+      },
+      "referenceNumber": 3,
+      "referencePositions": [
+        "NUCLEOTIDE SEQUENCE [LARGE SCALE GENOMIC DNA]"
+      ]
+    },
+    {
+      "citation": {
+        "authoringGroup": [
+          "The MGC Project Team"
+        ],
+        "citationCrossReferences": [
+          {
+            "database": "PubMed",
+            "id": "15489334"
+          },
+          {
+            "database": "DOI",
+            "id": "10.1101/gr.2596504"
+          }
+        ],
+        "citationType": "journal article",
+        "firstPage": "2121",
+        "id": "15489334",
+        "journal": "Genome Res.",
+        "lastPage": "2127",
+        "publicationDate": "2004",
+        "title": "The status, quality, and expansion of the NIH full-length cDNA project: the Mammalian Gene Collection (MGC).",
+        "volume": "14"
+      },
+      "referenceComments": [
+        {
+          "type": "TISSUE",
+          "value": "Testis"
+        }
+      ],
+      "referenceNumber": 4,
+      "referencePositions": [
+        "NUCLEOTIDE SEQUENCE [LARGE SCALE MRNA] (ISOFORM 1)"
+      ]
+    }
+  ],
+  "secondaryAccessions": [
+    "A6NIY0",
+    "E9PAK7"
+  ],
+  "sequence": {
+    "crc64": "8B500B9E045C0EFB",
+    "length": 123,
+    "md5": "64A1736287D5576B8CAD9294A2EF94EA",
+    "molWeight": 13842,
+    "value": "MRQRLLPSVTSLLLVALLFPGSSQARHVNHSATEALGELRERAPGQGTNGFQLLRHAVKRDLLPPRTPPYQVHISHQEARGPSFKICVGFLGPRWARGCSTGNEKYHLPYAARDLQTFFLPFW"
+  },
+  "uniProtKBCrossReferences": [
+    {
+      "database": "EMBL",
+      "id": "AF168618",
+      "properties": [
+        {
+          "key": "ProteinId",
+          "value": "AAF37188.1"
+        },
+        {
+          "key": "Status",
+          "value": "-"
+        },
+        {
+          "key": "MoleculeType",
+          "value": "mRNA"
+        }
+      ]
+    },
+    {
+      "database": "EMBL",
+      "id": "AF168619",
+      "properties": [
+        {
+          "key": "ProteinId",
+          "value": "AAF37189.1"
+        },
+        {
+          "key": "Status",
+          "value": "-"
+        },
+        {
+          "key": "MoleculeType",
+          "value": "mRNA"
+        }
+      ]
+    },
+    {
+      "database": "EMBL",
+      "id": "AF168620",
+      "properties": [
+        {
+          "key": "ProteinId",
+          "value": "AAF37190.1"
+        },
+        {
+          "key": "Status",
+          "value": "-"
+        },
+        {
+          "key": "MoleculeType",
+          "value": "mRNA"
+        }
+      ]
+    },
+    {
+      "database": "EMBL",
+      "id": "AF170797",
+      "properties": [
+        {
+          "key": "ProteinId",
+          "value": "AAF37191.1"
+        },
+        {
+          "key": "Status",
+          "value": "-"
+        },
+        {
+          "key": "MoleculeType",
+          "value": "mRNA"
+        }
+      ]
+    },
+    {
+      "database": "EMBL",
+      "id": "AY005129",
+      "properties": [
+        {
+          "key": "ProteinId",
+          "value": "AAG21884.1"
+        },
+        {
+          "key": "Status",
+          "value": "-"
+        },
+        {
+          "key": "MoleculeType",
+          "value": "Genomic_DNA"
+        }
+      ]
+    },
+    {
+      "database": "EMBL",
+      "id": "AY005129",
+      "properties": [
+        {
+          "key": "ProteinId",
+          "value": "AAG21885.1"
+        },
+        {
+          "key": "Status",
+          "value": "-"
+        },
+        {
+          "key": "MoleculeType",
+          "value": "Genomic_DNA"
+        }
+      ]
+    },
+    {
+      "database": "EMBL",
+      "id": "AY005129",
+      "properties": [
+        {
+          "key": "ProteinId",
+          "value": "AAG21886.1"
+        },
+        {
+          "key": "Status",
+          "value": "-"
+        },
+        {
+          "key": "MoleculeType",
+          "value": "Genomic_DNA"
+        }
+      ]
+    },
+    {
+      "database": "EMBL",
+      "id": "AC130365",
+      "properties": [
+        {
+          "key": "ProteinId",
+          "value": "-"
+        },
+        {
+          "key": "Status",
+          "value": "NOT_ANNOTATED_CDS"
+        },
+        {
+          "key": "MoleculeType",
+          "value": "Genomic_DNA"
+        }
+      ]
+    },
+    {
+      "database": "EMBL",
+      "id": "BC058833",
+      "properties": [
+        {
+          "key": "ProteinId",
+          "value": "AAH58833.2"
+        },
+        {
+          "key": "Status",
+          "value": "-"
+        },
+        {
+          "key": "MoleculeType",
+          "value": "mRNA"
+        }
+      ]
+    },
+    {
+      "database": "CCDS",
+      "id": "CCDS43700.1",
+      "isoformId": "Q6PDA7-2",
+      "properties": [
+        {
+          "key": "Description",
+          "value": "-"
+        }
+      ]
+    },
+    {
+      "database": "RefSeq",
+      "id": "NP_001075021.2",
+      "properties": [
+        {
+          "key": "NucleotideSequenceId",
+          "value": "NM_001081552.2"
+        }
+      ]
+    },
+    {
+      "database": "RefSeq",
+      "id": "NP_478109.1",
+      "isoformId": "Q6PDA7-3",
+      "properties": [
+        {
+          "key": "NucleotideSequenceId",
+          "value": "NM_058202.2"
+        }
+      ]
+    },
+    {
+      "database": "AlphaFoldDB",
+      "id": "Q6PDA7",
+      "properties": [
+        {
+          "key": "Description",
+          "value": "-"
+        }
+      ]
+    },
+    {
+      "database": "BioGRID",
+      "id": "115678",
+      "properties": [
+        {
+          "key": "Interactions",
+          "value": "3"
+        }
+      ]
+    },
+    {
+      "database": "BioGRID",
+      "id": "575769",
+      "properties": [
+        {
+          "key": "Interactions",
+          "value": "43"
+        }
+      ]
+    },
+    {
+      "database": "STRING",
+      "id": "9606.ENSP00000316012",
+      "properties": [
+        {
+          "key": "Description",
+          "value": "-"
+        }
+      ]
+    },
+    {
+      "database": "GlyCosmos",
+      "id": "Q6PDA7",
+      "properties": [
+        {
+          "key": "glycosylation",
+          "value": "1 site, No reported glycans"
+        }
+      ]
+    },
+    {
+      "database": "GlyGen",
+      "id": "Q6PDA7",
+      "properties": [
+        {
+          "key": "glycosylation",
+          "value": "1 site"
+        }
+      ]
+    },
+    {
+      "database": "BioMuta",
+      "id": "SPAG11A",
+      "properties": [
+        {
+          "key": "Description",
+          "value": "-"
+        }
+      ]
+    },
+    {
+      "database": "DMDM",
+      "id": "166219773",
+      "properties": [
+        {
+          "key": "Description",
+          "value": "-"
+        }
+      ]
+    },
+    {
+      "database": "MassIVE",
+      "id": "Q6PDA7",
+      "properties": [
+        {
+          "key": "Description",
+          "value": "-"
+        }
+      ]
+    },
+    {
+      "database": "PaxDb",
+      "id": "9606-ENSP00000316012",
+      "properties": [
+        {
+          "key": "Description",
+          "value": "-"
+        }
+      ]
+    },
+    {
+      "database": "PeptideAtlas",
+      "id": "Q6PDA7",
+      "properties": [
+        {
+          "key": "Description",
+          "value": "-"
+        }
+      ]
+    },
+    {
+      "database": "ProteomicsDB",
+      "id": "19035",
+      "properties": [
+        {
+          "key": "Description",
+          "value": "-"
+        }
+      ]
+    },
+    {
+      "database": "ProteomicsDB",
+      "id": "67071",
+      "isoformId": "Q6PDA7-1",
+      "properties": [
+        {
+          "key": "Description",
+          "value": "-"
+        }
+      ]
+    },
+    {
+      "database": "ProteomicsDB",
+      "id": "67072",
+      "isoformId": "Q6PDA7-2",
+      "properties": [
+        {
+          "key": "Description",
+          "value": "-"
+        }
+      ]
+    },
+    {
+      "database": "Antibodypedia",
+      "id": "41785",
+      "properties": [
+        {
+          "key": "antibodies",
+          "value": "78 antibodies from 18 providers"
+        }
+      ]
+    },
+    {
+      "database": "DNASU",
+      "id": "10407",
+      "properties": [
+        {
+          "key": "Description",
+          "value": "-"
+        }
+      ]
+    },
+    {
+      "database": "Ensembl",
+      "id": "ENST00000351436.8",
+      "isoformId": "Q6PDA7-3",
+      "properties": [
+        {
+          "key": "ProteinId",
+          "value": "ENSP00000297496.5"
+        },
+        {
+          "key": "GeneId",
+          "value": "ENSG00000178287.18"
+        }
+      ]
+    },
+    {
+      "database": "Ensembl",
+      "id": "ENST00000361111.6",
+      "isoformId": "Q6PDA7-3",
+      "properties": [
+        {
+          "key": "ProteinId",
+          "value": "ENSP00000354411.2"
+        },
+        {
+          "key": "GeneId",
+          "value": "ENSG00000164871.18"
+        }
+      ]
+    },
+    {
+      "database": "Ensembl",
+      "id": "ENST00000710641.1",
+      "isoformId": "Q6PDA7-3",
+      "properties": [
+        {
+          "key": "ProteinId",
+          "value": "ENSP00000518396.1"
+        },
+        {
+          "key": "GeneId",
+          "value": "ENSG00000285507.3"
+        }
+      ]
+    },
+    {
+      "database": "Ensembl",
+      "id": "ENST00000711409.1",
+      "isoformId": "Q6PDA7-3",
+      "properties": [
+        {
+          "key": "ProteinId",
+          "value": "ENSP00000518732.1"
+        },
+        {
+          "key": "GeneId",
+          "value": "ENSG00000288309.2"
+        }
+      ]
+    },
+    {
+      "database": "GeneID",
+      "id": "10407",
+      "properties": [
+        {
+          "key": "Description",
+          "value": "-"
+        }
+      ]
+    },
+    {
+      "database": "GeneID",
+      "id": "653423",
+      "properties": [
+        {
+          "key": "Description",
+          "value": "-"
+        }
+      ]
+    },
+    {
+      "database": "KEGG",
+      "id": "hsa:653423",
+      "properties": [
+        {
+          "key": "Description",
+          "value": "-"
+        }
+      ]
+    },
+    {
+      "database": "UCSC",
+      "id": "uc064kbl.1",
+      "isoformId": "Q6PDA7-1",
+      "properties": [
+        {
+          "key": "OrganismName",
+          "value": "human"
+        }
+      ]
+    },
+    {
+      "database": "AGR",
+      "id": "HGNC:14534",
+      "properties": [
+        {
+          "key": "Description",
+          "value": "-"
+        }
+      ]
+    },
+    {
+      "database": "AGR",
+      "id": "HGNC:33342",
+      "properties": [
+        {
+          "key": "Description",
+          "value": "-"
+        }
+      ]
+    },
+    {
+      "database": "ClinPGx",
+      "id": "PA162404366",
+      "properties": [
+        {
+          "key": "Description",
+          "value": "-"
+        }
+      ]
+    },
+    {
+      "database": "CTD",
+      "id": "10407",
+      "properties": [
+        {
+          "key": "Description",
+          "value": "-"
+        }
+      ]
+    },
+    {
+      "database": "CTD",
+      "id": "653423",
+      "properties": [
+        {
+          "key": "Description",
+          "value": "-"
+        }
+      ]
+    },
+    {
+      "database": "DisGeNET",
+      "id": "10407",
+      "properties": [
+        {
+          "key": "Description",
+          "value": "-"
+        }
+      ]
+    },
+    {
+      "database": "DisGeNET",
+      "id": "653423",
+      "properties": [
+        {
+          "key": "Description",
+          "value": "-"
+        }
+      ]
+    },
+    {
+      "database": "GeneCards",
+      "id": "SPAG11A",
+      "properties": [
+        {
+          "key": "Description",
+          "value": "-"
+        }
+      ]
+    },
+    {
+      "database": "HGNC",
+      "id": "HGNC:33342",
+      "properties": [
+        {
+          "key": "GeneName",
+          "value": "SPAG11A"
+        }
+      ]
+    },
+    {
+      "database": "HPA",
+      "id": "ENSG00000178287",
+      "properties": [
+        {
+          "key": "ExpressionPatterns",
+          "value": "Tissue enriched (epididymis)"
+        }
+      ]
+    },
+    {
+      "database": "MIM",
+      "id": "606560",
+      "properties": [
+        {
+          "key": "Type",
+          "value": "gene"
+        }
+      ]
+    },
+    {
+      "database": "OpenTargets",
+      "id": "ENSG00000178287",
+      "properties": [
+        {
+          "key": "Description",
+          "value": "-"
+        }
+      ]
+    },
+    {
+      "database": "VEuPathDB",
+      "id": "HostDB:ENSG00000178287",
+      "properties": [
+        {
+          "key": "Description",
+          "value": "-"
+        }
+      ]
+    },
+    {
+      "database": "eggNOG",
+      "id": "ENOG502TDV0",
+      "properties": [
+        {
+          "key": "ToxonomicScope",
+          "value": "Eukaryota"
+        }
+      ]
+    },
+    {
+      "database": "GeneTree",
+      "id": "ENSGT00940000161432",
+      "properties": [
+        {
+          "key": "Description",
+          "value": "-"
+        }
+      ]
+    },
+    {
+      "database": "InParanoid",
+      "id": "Q6PDA7",
+      "properties": [
+        {
+          "key": "Description",
+          "value": "-"
+        }
+      ]
+    },
+    {
+      "database": "OrthoDB",
+      "id": "9828952at2759",
+      "properties": [
+        {
+          "key": "Description",
+          "value": "-"
+        }
+      ]
+    },
+    {
+      "database": "PAN-GO",
+      "id": "Q6PDA7",
+      "properties": [
+        {
+          "key": "Number of GO annotations",
+          "value": "0 GO annotations based on evolutionary models"
+        }
+      ]
+    },
+    {
+      "database": "PhylomeDB",
+      "id": "Q6PDA7",
+      "properties": [
+        {
+          "key": "Description",
+          "value": "-"
+        }
+      ]
+    },
+    {
+      "database": "PathwayCommons",
+      "id": "Q6PDA7",
+      "properties": [
+        {
+          "key": "Description",
+          "value": "-"
+        }
+      ]
+    },
+    {
+      "database": "Agora",
+      "id": "ENSG00000178287",
+      "properties": [
+        {
+          "key": "NominatedTarget",
+          "value": "-"
+        }
+      ]
+    },
+    {
+      "database": "BioGRID-ORCS",
+      "id": "10407",
+      "properties": [
+        {
+          "key": "hits",
+          "value": "15 hits in 1026 CRISPR screens"
+        }
+      ]
+    },
+    {
+      "database": "BioGRID-ORCS",
+      "id": "653423",
+      "properties": [
+        {
+          "key": "hits",
+          "value": "11 hits in 672 CRISPR screens"
+        }
+      ]
+    },
+    {
+      "database": "ChiTaRS",
+      "id": "SPAG11A",
+      "properties": [
+        {
+          "key": "OrganismName",
+          "value": "human"
+        }
+      ]
+    },
+    {
+      "database": "Pharos",
+      "id": "Q6PDA7",
+      "properties": [
+        {
+          "key": "DevelopmentLevel",
+          "value": "Tbio"
+        }
+      ]
+    },
+    {
+      "database": "PRO",
+      "id": "PR:Q6PDA7",
+      "properties": [
+        {
+          "key": "Description",
+          "value": "-"
+        }
+      ]
+    },
+    {
+      "database": "Proteomes",
+      "id": "UP000005640",
+      "properties": [
+        {
+          "key": "Component",
+          "value": "Chromosome 8"
+        }
+      ]
+    },
+    {
+      "database": "RNAct",
+      "id": "Q6PDA7",
+      "properties": [
+        {
+          "key": "moleculeType",
+          "value": "protein"
+        }
+      ]
+    },
+    {
+      "database": "Bgee",
+      "id": "ENSG00000178287",
+      "properties": [
+        {
+          "key": "ExpressionPatterns",
+          "value": "Expressed in male germ line stem cell (sensu Vertebrata) in testis and 43 other cell types or tissues"
+        }
+      ]
+    },
+    {
+      "database": "ExpressionAtlas",
+      "id": "Q6PDA7",
+      "properties": [
+        {
+          "key": "ExpressionPatterns",
+          "value": "baseline and differential"
+        }
+      ]
+    },
+    {
+      "database": "GO",
+      "id": "GO:0005576",
+      "properties": [
+        {
+          "key": "GoTerm",
+          "value": "C:extracellular region"
+        },
+        {
+          "key": "GoEvidenceType",
+          "value": "IEA:UniProtKB-SubCell"
+        }
+      ]
+    },
+    {
+      "database": "GO",
+      "id": "GO:0042742",
+      "properties": [
+        {
+          "key": "GoTerm",
+          "value": "P:defense response to bacterium"
+        },
+        {
+          "key": "GoEvidenceType",
+          "value": "IEA:UniProtKB-KW"
+        }
+      ]
+    },
+    {
+      "database": "InterPro",
+      "id": "IPR007988",
+      "properties": [
+        {
+          "key": "EntryName",
+          "value": "Sperm_Ag_11A_B"
+        }
+      ]
+    },
+    {
+      "database": "PANTHER",
+      "id": "PTHR14081:SF1",
+      "properties": [
+        {
+          "key": "EntryName",
+          "value": "SPERM-ASSOCIATED ANTIGEN 11A-RELATED"
+        },
+        {
+          "key": "MatchStatus",
+          "value": "1"
+        }
+      ]
+    },
+    {
+      "database": "PANTHER",
+      "id": "PTHR14081",
+      "properties": [
+        {
+          "key": "EntryName",
+          "value": "SPERM-ASSOCIATED ANTIGEN 11A-RELATED-RELATED"
+        },
+        {
+          "key": "MatchStatus",
+          "value": "1"
+        }
+      ]
+    },
+    {
+      "database": "Pfam",
+      "id": "PF05324",
+      "properties": [
+        {
+          "key": "EntryName",
+          "value": "Sperm_Ag_HE2"
+        },
+        {
+          "key": "MatchStatus",
+          "value": "1"
+        }
+      ]
+    }
+  ],
+  "uniProtkbId": "SG11A_HUMAN"
+}
