@@ -1,0 +1,830 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Compound Dossier Evaluation Guide for Surfactant Design</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- KaTeX for Math Rendering -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body);"></script>
+    
+    <style>
+        :root {
+            --bg-primary: #0b0f19;
+            --bg-secondary: #111827;
+            --card-bg: rgba(31, 41, 55, 0.65);
+            --card-border: rgba(255, 255, 255, 0.08);
+            --text-main: #f3f4f6;
+            --text-muted: #9ca3af;
+            --text-dim: #6b7280;
+            
+            --accent-architect: #818cf8; /* Indigo */
+            --accent-collaborator: #34d399; /* Emerald */
+            --accent-skeptic: #fbbf24; /* Amber */
+            --accent-minimalist: #f472b6; /* Pink */
+            --accent-verifier: #38bdf8; /* Sky */
+            --accent-mentor: #f87171; /* Red */
+            
+            --radius-lg: 16px;
+            --radius-md: 10px;
+            --transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-main);
+            line-height: 1.6;
+            padding: 2rem 1rem;
+            min-height: 100vh;
+            background-image: 
+                radial-gradient(circle at 15% 15%, rgba(99, 102, 241, 0.12) 0%, transparent 45%),
+                radial-gradient(circle at 85% 85%, rgba(16, 185, 129, 0.1) 0%, transparent 45%);
+            background-attachment: fixed;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Header / Hero */
+        header {
+            text-align: center;
+            padding: 3rem 1.5rem;
+            background: rgba(17, 24, 39, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--card-border);
+            border-radius: var(--radius-lg);
+            margin-bottom: 2.5rem;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 0.35rem 1rem;
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.2), rgba(16, 185, 129, 0.2));
+            border: 1px solid rgba(99, 102, 241, 0.4);
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #a5b4fc;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+        }
+
+        h1 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #ffffff 30%, #a5b4fc 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 0.75rem;
+            letter-spacing: -0.02em;
+        }
+
+        .subtitle {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            max-width: 750px;
+            margin: 0 auto;
+        }
+
+        /* Navigation Tabs */
+        .tabs-nav {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .tab-btn {
+            background: rgba(31, 41, 55, 0.6);
+            border: 1px solid var(--card-border);
+            color: var(--text-muted);
+            padding: 0.75rem 1.25rem;
+            border-radius: var(--radius-md);
+            font-size: 0.95rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .tab-btn:hover {
+            background: rgba(55, 65, 81, 0.8);
+            color: #fff;
+        }
+
+        .tab-btn.active {
+            background: rgba(99, 102, 241, 0.25);
+            border-color: #6366f1;
+            color: #fff;
+            box-shadow: 0 4px 12px rgba(99, 102, 241, 0.2);
+        }
+
+        /* Section Layouts */
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.4s ease-in-out;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(8px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Grid Layout for Persona Cards */
+        .persona-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .persona-card {
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--card-border);
+            border-radius: var(--radius-lg);
+            padding: 1.75rem;
+            position: relative;
+            overflow: hidden;
+            transition: var(--transition);
+        }
+
+        .persona-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.4);
+        }
+
+        .persona-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+        }
+
+        .card-architect::before { background: var(--accent-architect); }
+        .card-collaborator::before { background: var(--accent-collaborator); }
+        .card-skeptic::before { background: var(--accent-skeptic); }
+        .card-minimalist::before { background: var(--accent-minimalist); }
+        .card-verifier::before { background: var(--accent-verifier); }
+        .card-mentor::before { background: var(--accent-mentor); }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 1rem;
+        }
+
+        .role-icon {
+            font-size: 1.75rem;
+            line-height: 1;
+        }
+
+        .role-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.35rem;
+            font-weight: 700;
+        }
+
+        .card-architect .role-title { color: var(--accent-architect); }
+        .card-collaborator .role-title { color: var(--accent-collaborator); }
+        .card-skeptic .role-title { color: var(--accent-skeptic); }
+        .card-minimalist .role-title { color: var(--accent-minimalist); }
+        .card-verifier .role-title { color: var(--accent-verifier); }
+        .card-mentor .role-title { color: var(--accent-mentor); }
+
+        .card-subtitle {
+            font-size: 0.85rem;
+            color: var(--text-dim);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 1rem;
+        }
+
+        .focus-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .focus-item {
+            font-size: 0.95rem;
+            color: var(--text-main);
+            padding-left: 1.25rem;
+            position: relative;
+        }
+
+        .focus-item::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: var(--text-muted);
+            font-weight: bold;
+        }
+
+        .highlight-box {
+            background: rgba(0, 0, 0, 0.25);
+            border-left: 3px solid #6366f1;
+            padding: 0.85rem 1rem;
+            border-radius: 0 var(--radius-md) var(--radius-md) 0;
+            margin-top: 1.25rem;
+            font-size: 0.9rem;
+            color: #d1d5db;
+        }
+
+        /* Interactive Calculator Card */
+        .calc-container {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: var(--radius-lg);
+            padding: 2rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .calc-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        @media (max-width: 768px) {
+            .calc-grid { grid-template-columns: 1fr; }
+        }
+
+        .form-group {
+            margin-bottom: 1.25rem;
+        }
+
+        label {
+            display: block;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin-bottom: 0.35rem;
+        }
+
+        input[type="number"] {
+            width: 100%;
+            background: rgba(17, 24, 39, 0.8);
+            border: 1px solid var(--card-border);
+            border-radius: var(--radius-md);
+            padding: 0.65rem 0.85rem;
+            color: #fff;
+            font-size: 1rem;
+            outline: none;
+            transition: var(--transition);
+        }
+
+        input[type="number"]:focus {
+            border-color: #6366f1;
+            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
+        }
+
+        .calc-result-box {
+            background: rgba(17, 24, 39, 0.9);
+            border: 1px solid rgba(99, 102, 241, 0.3);
+            border-radius: var(--radius-md);
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .p-value {
+            font-family: 'Outfit', sans-serif;
+            font-size: 3rem;
+            font-weight: 800;
+            color: #818cf8;
+            line-height: 1;
+            margin: 0.5rem 0;
+        }
+
+        .p-structure {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #34d399;
+            margin-bottom: 0.5rem;
+        }
+
+        .structure-icon-box {
+            height: 120px;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 1rem;
+        }
+
+        /* Table Styling */
+        .table-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: var(--radius-lg);
+            padding: 1.75rem;
+            overflow-x: auto;
+            margin-bottom: 2.5rem;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+        }
+
+        th {
+            background: rgba(17, 24, 39, 0.8);
+            padding: 1rem;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--text-muted);
+            border-bottom: 1px solid var(--card-border);
+        }
+
+        td {
+            padding: 1rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+            font-size: 0.95rem;
+        }
+
+        tr:hover td {
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        .status-pill {
+            display: inline-block;
+            padding: 0.25rem 0.65rem;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .pill-required { background: rgba(239, 68, 68, 0.15); color: #fca5a5; border: 1px solid rgba(239, 68, 68, 0.3); }
+        .pill-critical { background: rgba(245, 158, 11, 0.15); color: #fde047; border: 1px solid rgba(245, 158, 11, 0.3); }
+        .pill-standard { background: rgba(56, 189, 248, 0.15); color: #7dd3fc; border: 1px solid rgba(56, 189, 248, 0.3); }
+
+        /* Checklist Section */
+        .checklist-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.25rem;
+        }
+
+        .check-item {
+            background: rgba(31, 41, 55, 0.5);
+            border: 1px solid var(--card-border);
+            padding: 1rem 1.25rem;
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: flex-start;
+            gap: 0.85rem;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .check-item:hover {
+            background: rgba(55, 65, 81, 0.6);
+        }
+
+        .check-item input[type="checkbox"] {
+            margin-top: 0.25rem;
+            width: 18px;
+            height: 18px;
+            accent-color: #6366f1;
+            cursor: pointer;
+        }
+
+        .check-text {
+            font-size: 0.95rem;
+        }
+
+        .check-text strong {
+            display: block;
+            color: #fff;
+            margin-bottom: 0.15rem;
+        }
+
+        .check-text span {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            color: var(--text-dim);
+            font-size: 0.85rem;
+            border-top: 1px solid var(--card-border);
+            margin-top: 3rem;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <!-- Header -->
+    <header>
+        <div class="badge">Aganitha Roles & Personas Framework</div>
+        <h1>Surfactant Molecule Design & Dossier Guide</h1>
+        <p class="subtitle">A comprehensive, multi-perspective breakdown for surfactant synthesis chemists evaluating compound dossiers before embarking on new molecule design.</p>
+    </header>
+
+    <!-- Navigation Tabs -->
+    <div class="tabs-nav">
+        <button class="tab-btn active" onclick="switchTab('personas')">
+            <span>🎭</span> Persona Perspectives
+        </button>
+        <button class="tab-btn" onclick="switchTab('calculator')">
+            <span>🧮</span> Packing Parameter Calculator ($P$)
+        </button>
+        <button class="tab-btn" onclick="switchTab('matrix')">
+            <span>📊</span> Analytical Verification Matrix
+        </button>
+        <button class="tab-btn" onclick="switchTab('checklist')">
+            <span>☑️</span> Pre-Synthesis Dossier Audit Checklist
+        </button>
+    </div>
+
+    <!-- TAB 1: Persona Perspectives -->
+    <div id="tab-personas" class="tab-content active">
+        <div class="persona-grid">
+            
+            <!-- Architect Card -->
+            <div class="persona-card card-architect">
+                <div class="card-header">
+                    <span class="role-icon">📐</span>
+                    <div>
+                        <div class="role-title">Architect</div>
+                        <div class="card-subtitle">Structural & Molecular Architecture</div>
+                    </div>
+                </div>
+                <ul class="focus-list">
+                    <li class="focus-item"><strong>Hydrophobic Tail Profile:</strong> Chain length ($C_8$–$C_{18}$), branching (e.g., Guerbet), fluorocarbon/silicone content, and saturation vs. unsaturation.</li>
+                    <li class="focus-item"><strong>Hydrophilic Head Mechanics:</strong> Charge class (Anionic, Cationic, Zwitterionic, Non-ionic), sterics, and counterion identity ($Na^+$, $K^+$, $TEA^+$, $Cl^-$).</li>
+                    <li class="focus-item"><strong>Linker Seam Stability:</strong> Chemical junction type (ester, amide, ether, triazole) and hydrolytic stability across target pH windows.</li>
+                    <li class="focus-item"><strong>Packing Parameter ($P$):</strong> Geometry predicting self-assembly ($P = V / (a_0 \cdot l_c)$).</li>
+                </ul>
+                <div class="highlight-box">
+                    <strong>Architect's View:</strong> "Focus on the boundaries and long-term stability. Is the linker seam hydrolytically robust for a year in market?"
+                </div>
+            </div>
+
+            <!-- Collaborator Card -->
+            <div class="persona-card card-collaborator">
+                <div class="card-header">
+                    <span class="role-icon">🤝</span>
+                    <div>
+                        <div class="role-title">Collaborator</div>
+                        <div class="card-subtitle">Application & Synthetic Co-Creation</div>
+                    </div>
+                </div>
+                <ul class="focus-list">
+                    <li class="focus-item"><strong>Performance Targets:</strong> Critical Micelle Concentration (CMC), minimum surface tension ($\gamma_{CMC}$), dynamic wetting, and interfacial tension (IFT).</li>
+                    <li class="focus-item"><strong>Thermal & Phase Metrics:</strong> Cloud point for non-ionics, Krafft temperature for ionics, and emulsification index ($E_{24}$).</li>
+                    <li class="focus-item"><strong>Synthetic Pathways:</strong> Leveraging standard industrial building blocks (fatty acids, alcohols, Guerbet feeds) and direct reaction steps.</li>
+                </ul>
+                <div class="highlight-box">
+                    <strong>Collaborator's View:</strong> "Building on your target performance... how easily can we convert available fatty alcohol feeds via ethoxylation or sulfation?"
+                </div>
+            </div>
+
+            <!-- Skeptic Card -->
+            <div class="persona-card card-skeptic">
+                <div class="card-header">
+                    <span class="role-icon">🔍</span>
+                    <div>
+                        <div class="role-title">Skeptic</div>
+                        <div class="card-subtitle">Failure Modes & Hidden Assumptions</div>
+                    </div>
+                </div>
+                <ul class="focus-list">
+                    <li class="focus-item"><strong>HLB Assumptions:</strong> Don't rely purely on calculated HLB; test phase inversion temperature (PIT) and Salager's HLD.</li>
+                    <li class="focus-item"><strong>Purity vs. Polydispersity:</strong> Is the dossier assuming single-isomer purity when industrial synthesis yields broad $EO_n$ distributions?</li>
+                    <li class="focus-item"><strong>Degradation Traps:</strong> Ester hydrolysis in alkaline media, oxidative ether degradation, and calcium precipitation in hard water.</li>
+                    <li class="focus-item"><strong>EHS Red Flags:</strong> High aquatic toxicity ($LC_{50} < 1 \text{ mg/L}$), poor biodegradability, or high eye/skin irritation.</li>
+                </ul>
+                <div class="highlight-box">
+                    <strong>Skeptic's View:</strong> "What breaks this design? If Ca²⁺ in hard water precipitates your anionic tail, your low CMC means nothing."
+                </div>
+            </div>
+
+            <!-- Minimalist Card -->
+            <div class="persona-card card-minimalist">
+                <div class="card-header">
+                    <span class="role-icon">✂️</span>
+                    <div>
+                        <div class="role-title">Minimalist</div>
+                        <div class="card-subtitle">Retrosynthetic Simplicity</div>
+                    </div>
+                </div>
+                <ul class="focus-list">
+                    <li class="focus-item"><strong>Protecting Group Removal:</strong> Eliminate multi-step protection/deprotection sequences (e.g., in polyol/carbohydrate synthesis).</li>
+                    <li class="focus-item"><strong>One-Pot/Direct Steps:</strong> Prefer direct amidation, epoxide ring opening, or salt formation over multi-step cascades.</li>
+                    <li class="focus-item"><strong>Atom Economy:</strong> Avoid toxic reagents or stoichiometric salt waste (e.g., halide substitution).</li>
+                </ul>
+                <div class="highlight-box">
+                    <strong>Minimalist's View:</strong> "Remove the complex chiral center and protecting groups. What is the 1-step direct route that gets 90% of the surface activity?"
+                </div>
+            </div>
+
+            <!-- Verifier Card -->
+            <div class="persona-card card-verifier">
+                <div class="card-header">
+                    <span class="role-icon">✅</span>
+                    <div>
+                        <div class="role-title">Verifier</div>
+                        <div class="card-subtitle">Dossier Audit & Empirical Proof</div>
+                    </div>
+                </div>
+                <ul class="focus-list">
+                    <li class="focus-item"><strong>Spectral Evidence:</strong> $^{1}\text{H}/^{13}\text{C}$ NMR, ESI-MS, and LC-MS (>95% active material).</li>
+                    <li class="focus-item"><strong>Physical Property Data:</strong> Validated CMC, $\gamma_{CMC}$, Krafft point, and cloud point measurements.</li>
+                    <li class="focus-item"><strong>Eco-Tox Verification:</strong> OECD 301 Ready Biodegradability test report and Daphnia/Algae toxicity assays.</li>
+                </ul>
+                <div class="highlight-box">
+                    <strong>Verifier's View:</strong> "Show me the Wilhelmy plate tensiometry curve and the OECD 301B CO₂ evolution plot before we sign off."
+                </div>
+            </div>
+
+            <!-- Mentor Card -->
+            <div class="persona-card card-mentor">
+                <div class="card-header">
+                    <span class="role-icon">🥊</span>
+                    <div>
+                        <div class="role-title">Mentor</div>
+                        <div class="card-subtitle">Tough-Love Sparring Partner</div>
+                    </div>
+                </div>
+                <ul class="focus-list">
+                    <li class="focus-item"><strong>Commercial Viability:</strong> Does this solve a genuine performance gap (salt tolerance, low IFT, green profile)?</li>
+                    <li class="focus-item"><strong>Benchmark Reality Check:</strong> Why would a customer buy this over commodity SLES, LABS, or APG that cost $1.50/kg?</li>
+                </ul>
+                <div class="highlight-box">
+                    <strong>Mentor's View:</strong> "Novelty isn't value. Prove that this molecule beats SLES on both performance AND raw material economics."
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- TAB 2: Packing Parameter Calculator -->
+    <div id="tab-calculator" class="tab-content">
+        <div class="calc-container">
+            <h2 style="font-family: 'Outfit', sans-serif; margin-bottom: 0.5rem; color: #fff;">Critical Packing Parameter ($P$) Calculator</h2>
+            <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 1.5rem;">
+                Calculate the surfactant packing parameter $P = \frac{V}{a_0 \cdot l_c}$ to predict self-assembled aggregate geometry.
+            </p>
+            
+            <div class="calc-grid">
+                <div>
+                    <div class="form-group">
+                        <label for="tail-v">Hydrophobic Tail Volume ($V$ in Å³):</label>
+                        <input type="number" id="tail-v" value="350" step="10" oninput="calculateCPP()">
+                    </div>
+                    <div class="form-group">
+                        <label for="head-a">Optimal Headgroup Area ($a_0$ in Å²):</label>
+                        <input type="number" id="head-a" value="55" step="1" oninput="calculateCPP()">
+                    </div>
+                    <div class="form-group">
+                        <label for="tail-l">Critical Tail Length ($l_c$ in Å):</label>
+                        <input type="number" id="tail-l" value="16.5" step="0.5" oninput="calculateCPP()">
+                    </div>
+                </div>
+                
+                <div class="calc-result-box">
+                    <div style="font-size: 0.85rem; color: var(--text-muted); text-transform: uppercase;">Calculated Packing Parameter</div>
+                    <div class="p-value" id="p-result">0.386</div>
+                    <div class="p-structure" id="p-struct">Cylindrical / Wormlike Micelles</div>
+                    <div style="font-size: 0.85rem; color: var(--text-dim);" id="p-desc">Typical range: 1/3 &lt; P &lt; 1/2</div>
+                    
+                    <div class="structure-icon-box" id="svg-container">
+                        <!-- Dynamic SVG rendered by JS -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- TAB 3: Analytical Matrix -->
+    <div id="tab-matrix" class="tab-content">
+        <div class="table-card">
+            <h2 style="font-family: 'Outfit', sans-serif; margin-bottom: 1rem; color: #fff;">Analytical Verification Matrix for Compound Dossiers</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Category</th>
+                        <th>Required Dossier Parameter</th>
+                        <th>Standard Method</th>
+                        <th>Priority</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Structure & Purity</strong></td>
+                        <td>Active Content, $^{1}\text{H}/^{13}\text{C}$ NMR, ESI-MS</td>
+                        <td>LC-MS, GC-MS, NMR (>95% Purity)</td>
+                        <td><span class="status-pill pill-required">Required</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Polydispersity</strong></td>
+                        <td>Oligomer Distribution ($EO_n / PO_n$)</td>
+                        <td>GPC / GC-FID</td>
+                        <td><span class="status-pill pill-critical">Critical</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Surface Activity</strong></td>
+                        <td>CMC & Minimum Surface Tension ($\gamma_{CMC}$)</td>
+                        <td>Wilhelmy Plate / Tensiometry</td>
+                        <td><span class="status-pill pill-required">Required</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Phase Behavior</strong></td>
+                        <td>Krafft Point (Ionics) / Cloud Point (Non-ionics)</td>
+                        <td>Optical Transmittance Ramp</td>
+                        <td><span class="status-pill pill-critical">Critical</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Chemical Stability</strong></td>
+                        <td>Hydrolytic Stability (pH 2 - pH 12)</td>
+                        <td>Accelerated HPLC Aging (40°C)</td>
+                        <td><span class="status-pill pill-critical">Critical</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Hard Water Tolerance</strong></td>
+                        <td>Calcium/Magnesium Ion Compatibility</td>
+                        <td>Turbidimetric Titration ($Ca^{2+}$ ppm)</td>
+                        <td><span class="status-pill pill-standard">Standard</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Eco-Tox & Safety</strong></td>
+                        <td>Ready Biodegradability & Aquatic Tox ($EC_{50}$)</td>
+                        <td>OECD 301B / OECD 202 (Daphnia)</td>
+                        <td><span class="status-pill pill-required">Required</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- TAB 4: Checklist -->
+    <div id="tab-checklist" class="tab-content">
+        <div class="table-card">
+            <h2 style="font-family: 'Outfit', sans-serif; margin-bottom: 1rem; color: #fff;">Pre-Synthesis Dossier Audit Checklist</h2>
+            <div class="checklist-grid">
+                <label class="check-item">
+                    <input type="checkbox" checked>
+                    <div class="check-text">
+                        <strong>1. Raw Material Sourcing</strong>
+                        <span>Are hydrophobic precursors commercially available at target cost?</span>
+                    </div>
+                </label>
+
+                <label class="check-item">
+                    <input type="checkbox" checked>
+                    <div class="check-text">
+                        <strong>2. Linker Seam Verification</strong>
+                        <span>Is the linkage (ester, amide, ether) compatible with target product pH?</span>
+                    </div>
+                </label>
+
+                <label class="check-item">
+                    <input type="checkbox">
+                    <div class="check-text">
+                        <strong>3. Synthetic Step Count</strong>
+                        <span>Is the route $\le 2$ steps with no protecting groups required?</span>
+                    </div>
+                </label>
+
+                <label class="check-item">
+                    <input type="checkbox">
+                    <div class="check-text">
+                        <strong>4. Calculated vs Experimental HLB</strong>
+                        <span>Has HLD/PIT phase behavior been verified beyond Davies HLB?</span>
+                    </div>
+                </label>
+
+                <label class="check-item">
+                    <input type="checkbox">
+                    <div class="check-text">
+                        <strong>5. PFAS / Fluorine Compliance</strong>
+                        <span>Is the molecule free of non-degradable perfluorinated chains?</span>
+                    </div>
+                </label>
+
+                <label class="check-item">
+                    <input type="checkbox">
+                    <div class="check-text">
+                        <strong>6. Environmental Fate Audit</strong>
+                        <span>Does the structure meet OECD 301 ready biodegradability criteria?</span>
+                    </div>
+                </label>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        Compound Dossier Evaluation Guide &bull; Designed for Surfactant Synthesis Chemists &bull; Aganitha Cognitive Framework
+    </footer>
+</div>
+
+<script>
+    function switchTab(tabId) {
+        document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+        document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+        
+        event.currentTarget.classList.add('active');
+        document.getElementById('tab-' + tabId).classList.add('active');
+    }
+
+    function calculateCPP() {
+        const V = parseFloat(document.getElementById('tail-v').value) || 0;
+        const a0 = parseFloat(document.getElementById('head-a').value) || 0;
+        const lc = parseFloat(document.getElementById('tail-l').value) || 0;
+
+        if (a0 <= 0 || lc <= 0) return;
+
+        const P = V / (a0 * lc);
+        const pElem = document.getElementById('p-result');
+        const structElem = document.getElementById('p-struct');
+        const descElem = document.getElementById('p-desc');
+        const svgContainer = document.getElementById('svg-container');
+
+        pElem.innerText = P.toFixed(3);
+
+        let structureName = "";
+        let rangeDesc = "";
+        let svgShape = "";
+
+        if (P < 0.333) {
+            structureName = "Spherical Micelles";
+            rangeDesc = "Range: P < 1/3 (High headgroup curvature)";
+            svgShape = `<svg width="100" height="100" viewBox="0 0 100 100">
+                <circle cx="50" cy="50" r="35" fill="none" stroke="#34d399" stroke-width="4" stroke-dasharray="6 4"/>
+                <circle cx="50" cy="50" r="15" fill="rgba(52, 211, 153, 0.2)"/>
+            </svg>`;
+        } else if (P >= 0.333 && P < 0.5) {
+            structureName = "Cylindrical / Wormlike Micelles";
+            rangeDesc = "Range: 1/3 ≤ P < 1/2 (Moderate curvature)";
+            svgShape = `<svg width="120" height="80" viewBox="0 0 120 80">
+                <rect x="20" y="20" width="80" height="40" rx="20" fill="none" stroke="#818cf8" stroke-width="4"/>
+                <rect x="35" y="30" width="50" height="20" rx="10" fill="rgba(129, 140, 248, 0.2)"/>
+            </svg>`;
+        } else if (P >= 0.5 && P < 1.0) {
+            structureName = "Flexible Bilayers / Vesicles";
+            rangeDesc = "Range: 1/2 ≤ P < 1 (Planar / Low curvature)";
+            svgShape = `<svg width="120" height="80" viewBox="0 0 120 80">
+                <line x1="10" y1="25" x2="110" y2="25" stroke="#38bdf8" stroke-width="6"/>
+                <line x1="10" y1="55" x2="110" y2="55" stroke="#38bdf8" stroke-width="6"/>
+            </svg>`;
+        } else {
+            structureName = "Inverted Micelles / Hexagonal Phase";
+            rangeDesc = "Range: P ≥ 1.0 (Inverted curvature)";
+            svgShape = `<svg width="100" height="100" viewBox="0 0 100 100">
+                <circle cx="50" cy="50" r="35" fill="rgba(248, 113, 113, 0.2)" stroke="#f87171" stroke-width="4"/>
+                <circle cx="50" cy="50" r="10" fill="#f87171"/>
+            </svg>`;
+        }
+
+        structElem.innerText = structureName;
+        descElem.innerText = rangeDesc;
+        svgContainer.innerHTML = svgShape;
+    }
+
+    // Initial calculation on page load
+    window.addEventListener('DOMContentLoaded', () => {
+        calculateCPP();
+    });
+</script>
+
+</body>
+</html>

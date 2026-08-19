@@ -1,0 +1,865 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Small Molecule & Drug Design Dossier Evaluation Guide</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- KaTeX for Math Rendering -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body);"></script>
+    
+    <style>
+        :root {
+            --bg-primary: #090d16;
+            --bg-secondary: #101726;
+            --card-bg: rgba(23, 32, 51, 0.7);
+            --card-border: rgba(255, 255, 255, 0.08);
+            --text-main: #f3f4f6;
+            --text-muted: #9ca3af;
+            --text-dim: #6b7280;
+            
+            --accent-architect: #818cf8; /* Indigo */
+            --accent-collaborator: #34d399; /* Emerald */
+            --accent-skeptic: #fbbf24; /* Amber */
+            --accent-minimalist: #ec4899; /* Pink */
+            --accent-verifier: #38bdf8; /* Sky */
+            --accent-mentor: #f87171; /* Red */
+            
+            --radius-lg: 16px;
+            --radius-md: 10px;
+            --transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-main);
+            line-height: 1.6;
+            padding: 2rem 1rem;
+            min-height: 100vh;
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(129, 140, 248, 0.12) 0%, transparent 45%),
+                radial-gradient(circle at 90% 80%, rgba(52, 211, 153, 0.1) 0%, transparent 45%);
+            background-attachment: fixed;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Header / Hero */
+        header {
+            text-align: center;
+            padding: 3rem 1.5rem;
+            background: rgba(16, 23, 38, 0.75);
+            backdrop-filter: blur(14px);
+            border: 1px solid var(--card-border);
+            border-radius: var(--radius-lg);
+            margin-bottom: 2.5rem;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 0.35rem 1rem;
+            background: linear-gradient(135deg, rgba(129, 140, 248, 0.2), rgba(52, 211, 153, 0.2));
+            border: 1px solid rgba(129, 140, 248, 0.4);
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #c7d2fe;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+        }
+
+        h1 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #ffffff 30%, #a5b4fc 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 0.75rem;
+            letter-spacing: -0.02em;
+        }
+
+        .subtitle {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* Navigation Tabs */
+        .tabs-nav {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .tab-btn {
+            background: rgba(23, 32, 51, 0.6);
+            border: 1px solid var(--card-border);
+            color: var(--text-muted);
+            padding: 0.75rem 1.25rem;
+            border-radius: var(--radius-md);
+            font-size: 0.95rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .tab-btn:hover {
+            background: rgba(37, 50, 77, 0.8);
+            color: #fff;
+        }
+
+        .tab-btn.active {
+            background: rgba(129, 140, 248, 0.25);
+            border-color: #818cf8;
+            color: #fff;
+            box-shadow: 0 4px 14px rgba(129, 140, 248, 0.25);
+        }
+
+        /* Section Layouts */
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.4s ease-in-out;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(8px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Persona Grid */
+        .persona-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .persona-card {
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--card-border);
+            border-radius: var(--radius-lg);
+            padding: 1.75rem;
+            position: relative;
+            overflow: hidden;
+            transition: var(--transition);
+        }
+
+        .persona-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.4);
+        }
+
+        .persona-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+        }
+
+        .card-architect::before { background: var(--accent-architect); }
+        .card-collaborator::before { background: var(--accent-collaborator); }
+        .card-skeptic::before { background: var(--accent-skeptic); }
+        .card-minimalist::before { background: var(--accent-minimalist); }
+        .card-verifier::before { background: var(--accent-verifier); }
+        .card-mentor::before { background: var(--accent-mentor); }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 1rem;
+        }
+
+        .role-icon {
+            font-size: 1.75rem;
+            line-height: 1;
+        }
+
+        .role-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.35rem;
+            font-weight: 700;
+        }
+
+        .card-architect .role-title { color: var(--accent-architect); }
+        .card-collaborator .role-title { color: var(--accent-collaborator); }
+        .card-skeptic .role-title { color: var(--accent-skeptic); }
+        .card-minimalist .role-title { color: var(--accent-minimalist); }
+        .card-verifier .role-title { color: var(--accent-verifier); }
+        .card-mentor .role-title { color: var(--accent-mentor); }
+
+        .card-subtitle {
+            font-size: 0.85rem;
+            color: var(--text-dim);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 1rem;
+        }
+
+        .focus-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .focus-item {
+            font-size: 0.95rem;
+            color: var(--text-main);
+            padding-left: 1.25rem;
+            position: relative;
+        }
+
+        .focus-item::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: var(--text-muted);
+            font-weight: bold;
+        }
+
+        .highlight-box {
+            background: rgba(0, 0, 0, 0.3);
+            border-left: 3px solid #818cf8;
+            padding: 0.85rem 1rem;
+            border-radius: 0 var(--radius-md) var(--radius-md) 0;
+            margin-top: 1.25rem;
+            font-size: 0.9rem;
+            color: #d1d5db;
+        }
+
+        /* Interactive Calculator Card */
+        .calc-container {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: var(--radius-lg);
+            padding: 2rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .calc-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        @media (max-width: 768px) {
+            .calc-grid { grid-template-columns: 1fr; }
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.1rem;
+        }
+
+        label {
+            display: block;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 0.3rem;
+        }
+
+        input[type="number"] {
+            width: 100%;
+            background: rgba(16, 23, 38, 0.85);
+            border: 1px solid var(--card-border);
+            border-radius: var(--radius-md);
+            padding: 0.6rem 0.85rem;
+            color: #fff;
+            font-size: 0.95rem;
+            outline: none;
+            transition: var(--transition);
+        }
+
+        input[type="number"]:focus {
+            border-color: #818cf8;
+            box-shadow: 0 0 0 3px rgba(129, 140, 248, 0.2);
+        }
+
+        .calc-result-box {
+            background: rgba(16, 23, 38, 0.9);
+            border: 1px solid rgba(129, 140, 248, 0.3);
+            border-radius: var(--radius-md);
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .status-badge {
+            display: inline-block;
+            padding: 0.4rem 1rem;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 700;
+            margin: 0.75rem 0;
+        }
+
+        .badge-pass { background: rgba(52, 211, 153, 0.2); color: #34d399; border: 1px solid #34d399; }
+        .badge-warn { background: rgba(251, 191, 36, 0.2); color: #fbbf24; border: 1px solid #fbbf24; }
+        .badge-fail { background: rgba(248, 113, 113, 0.2); color: #f87171; border: 1px solid #f87171; }
+
+        .metric-list {
+            width: 100%;
+            margin-top: 1rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            font-size: 0.85rem;
+            text-align: left;
+        }
+
+        .metric-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.4rem 0.6rem;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 6px;
+        }
+
+        /* Table Styling */
+        .table-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: var(--radius-lg);
+            padding: 1.75rem;
+            overflow-x: auto;
+            margin-bottom: 2.5rem;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+        }
+
+        th {
+            background: rgba(16, 23, 38, 0.8);
+            padding: 1rem;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--text-muted);
+            border-bottom: 1px solid var(--card-border);
+        }
+
+        td {
+            padding: 1rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+            font-size: 0.95rem;
+        }
+
+        tr:hover td {
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        .status-pill {
+            display: inline-block;
+            padding: 0.25rem 0.65rem;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .pill-required { background: rgba(248, 113, 113, 0.15); color: #fca5a5; border: 1px solid rgba(248, 113, 113, 0.3); }
+        .pill-critical { background: rgba(251, 191, 36, 0.15); color: #fde047; border: 1px solid rgba(251, 191, 36, 0.3); }
+        .pill-standard { background: rgba(56, 189, 248, 0.15); color: #7dd3fc; border: 1px solid rgba(56, 189, 248, 0.3); }
+
+        /* Checklist Section */
+        .checklist-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.25rem;
+        }
+
+        .check-item {
+            background: rgba(23, 32, 51, 0.5);
+            border: 1px solid var(--card-border);
+            padding: 1rem 1.25rem;
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: flex-start;
+            gap: 0.85rem;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .check-item:hover {
+            background: rgba(37, 50, 77, 0.6);
+        }
+
+        .check-item input[type="checkbox"] {
+            margin-top: 0.25rem;
+            width: 18px;
+            height: 18px;
+            accent-color: #818cf8;
+            cursor: pointer;
+        }
+
+        .check-text {
+            font-size: 0.95rem;
+        }
+
+        .check-text strong {
+            display: block;
+            color: #fff;
+            margin-bottom: 0.15rem;
+        }
+
+        .check-text span {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            color: var(--text-dim);
+            font-size: 0.85rem;
+            border-top: 1px solid var(--card-border);
+            margin-top: 3rem;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <!-- Header -->
+    <header>
+        <div class="badge">Aganitha Roles & Personas Framework</div>
+        <h1>Small Molecule / Drug Design Dossier Guide</h1>
+        <p class="subtitle">A multi-perspective evaluation guide for medicinal and synthetic chemists reviewing compound dossiers prior to initiating small molecule drug discovery synthesis.</p>
+    </header>
+
+    <!-- Navigation Tabs -->
+    <div class="tabs-nav">
+        <button class="tab-btn active" onclick="switchTab('personas')">
+            <span>🎭</span> Persona Perspectives
+        </button>
+        <button class="tab-btn" onclick="switchTab('calculator')">
+            <span>🧮</span> Drug-Likeness & Ro5 Checker
+        </button>
+        <button class="tab-btn" onclick="switchTab('matrix')">
+            <span>📊</span> Analytical Verification Matrix
+        </button>
+        <button class="tab-btn" onclick="switchTab('checklist')">
+            <span>☑️</span> Pre-Synthesis Audit Checklist
+        </button>
+    </div>
+
+    <!-- TAB 1: Persona Perspectives -->
+    <div id="tab-personas" class="tab-content active">
+        <div class="persona-grid">
+            
+            <!-- Architect Card -->
+            <div class="persona-card card-architect">
+                <div class="card-header">
+                    <span class="role-icon">📐</span>
+                    <div>
+                        <div class="role-title">Architect</div>
+                        <div class="card-subtitle">Structural & Pharmacophore Architecture</div>
+                    </div>
+                </div>
+                <ul class="focus-list">
+                    <li class="focus-item"><strong>Core Scaffold & Vectors:</strong> Central heterocycle rigidity, exit vectors for SAR exploration, and core-substituent seams.</li>
+                    <li class="focus-item"><strong>Physicochemical Space:</strong> Molecular Weight ($\text{MW} \le 500$), $\text{LogP}$ ($1 - 4$), $\text{TPSA} \le 140\ \text{\AA}^2$, and $\text{nRotB} \le 10$.</li>
+                    <li class="focus-item"><strong>Fraction $\text{sp}^3$ ($f_{\text{sp3}}$):</strong> Target $f_{\text{sp3}} \ge 0.35$ to improve aqueous solubility and reduce planar aggregation.</li>
+                    <li class="focus-item"><strong>Target Binding Mode:</strong> X-ray / Cryo-EM structural H-bonds, salt bridges, hydrophobic pocket filling, and halogen bonding.</li>
+                </ul>
+                <div class="highlight-box">
+                    <strong>Architect's View:</strong> "Is the core scaffold rigid enough to lock the active conformation while leaving clean exit vectors for SAR?"
+                </div>
+            </div>
+
+            <!-- Collaborator Card -->
+            <div class="persona-card card-collaborator">
+                <div class="card-header">
+                    <span class="role-icon">🤝</span>
+                    <div>
+                        <div class="role-title">Collaborator</div>
+                        <div class="card-subtitle">Synthetic Strategy & SAR Exploration</div>
+                    </div>
+                </div>
+                <ul class="focus-list">
+                    <li class="focus-item"><strong>Divergent Synthesis Route:</strong> Advanced intermediate design allowing rapid 20–50 analog parallel diversification.</li>
+                    <li class="focus-item"><strong>Building Block Availability:</strong> Commercial sourcing of boronic acids, aryl halides, and amines with short lead times.</li>
+                    <li class="focus-item"><strong>Robust Reaction Types:</strong> High-yielding transformations (Suzuki, Buchwald-Hartwig, Amide coupling, $S_N\text{Ar}$, Reductive Amination).</li>
+                </ul>
+                <div class="highlight-box">
+                    <strong>Collaborator's View:</strong> "Building on your key coupling step... let's design a core intermediate that lets us synthesize 30 diversely substituted analogs in 2 weeks."
+                </div>
+            </div>
+
+            <!-- Skeptic Card -->
+            <div class="persona-card card-skeptic">
+                <div class="card-header">
+                    <span class="role-icon">🔍</span>
+                    <div>
+                        <div class="role-title">Skeptic</div>
+                        <div class="card-subtitle">ADME Liabilities, Toxicity & IP Risks</div>
+                    </div>
+                </div>
+                <ul class="focus-list">
+                    <li class="focus-item"><strong>Metabolic Soft Spots:</strong> Unblocked $p$-positions on aromatic rings vulnerable to CYP oxidation; labile ester/amide linkages.</li>
+                    <li class="focus-item"><strong>Reactive Metabolite Alerts:</strong> Structural alerts (anilines, catechols, thiophenes, nitroaromatics) that form GSH adducts.</li>
+                    <li class="focus-item"><strong>hERG & Off-Target Liability:</strong> Basic amine ($\text{p}K_a > 8.5$) + lipophilic tail ($\text{LogP} > 3$) causing hERG channel binding ($IC_{50} < 10\ \mu\text{M}$).</li>
+                    <li class="focus-item"><strong>PAINS & FTO:</strong> Pan-Assay Interference filters and patent freedom-to-operate (FTO) Markush claim clearance.</li>
+                </ul>
+                <div class="highlight-box">
+                    <strong>Skeptic's View:</strong> "Sub-nanomolar target potency is useless if your basic amine causes hERG cardiotoxicity and rapid CYP clearance."
+                </div>
+            </div>
+
+            <!-- Minimalist Card -->
+            <div class="persona-card card-minimalist">
+                <div class="card-header">
+                    <span class="role-icon">✂️</span>
+                    <div>
+                        <div class="role-title">Minimalist</div>
+                        <div class="card-subtitle">Retrosynthetic Simplicity</div>
+                    </div>
+                </div>
+                <ul class="focus-list">
+                    <li class="focus-item"><strong>Step Economy:</strong> Keep overall synthetic route to $\le 5 - 7$ linear steps from commercial starting materials.</li>
+                    <li class="focus-item"><strong>Protecting Group Avoidance:</strong> Eliminate unnecessary Boc/Cbz/Bz protecting group steps through reordered reaction sequences.</li>
+                    <li class="focus-item"><strong>Stereochemical Pruning:</strong> Avoid non-essential chiral centers; use chiral pool or enantiopure building blocks if required.</li>
+                </ul>
+                <div class="highlight-box">
+                    <strong>Minimalist's View:</strong> "Remove the two non-essential stereocenters and the 3-step protecting group sequence. What is the 4-step direct route?"
+                </div>
+            </div>
+
+            <!-- Verifier Card -->
+            <div class="persona-card card-verifier">
+                <div class="card-header">
+                    <span class="role-icon">✅</span>
+                    <div>
+                        <div class="role-title">Verifier</div>
+                        <div class="card-subtitle">Analytical Proof & Data Integrity</div>
+                    </div>
+                </div>
+                <ul class="focus-list">
+                    <li class="focus-item"><strong>Purity & Proof:</strong> $^{1}\text{H}/^{13}\text{C}$ NMR, HRMS, and HPLC purity ($>95\%$).</li>
+                    <li class="focus-item"><strong>Enantiomeric Purity:</strong> Chiral HPLC / SFC confirming $\%ee > 98\%$.</li>
+                    <li class="focus-item"><strong>In Vitro ADME Suite:</strong> Kinetic/thermodynamic solubility (pH 2.0 & 7.4), Caco-2 permeability ($P_{app}$), and liver microsomal $CL_{int}$.</li>
+                </ul>
+                <div class="highlight-box">
+                    <strong>Verifier's View:</strong> "Provide the HPLC 254nm trace (>95%), Chiral SFC trace, and human microsomal clearance $CL_{int}$ before signing off."
+                </div>
+            </div>
+
+            <!-- Mentor Card -->
+            <div class="persona-card card-mentor">
+                <div class="card-header">
+                    <span class="role-icon">🥊</span>
+                    <div>
+                        <div class="role-title">Mentor</div>
+                        <div class="card-subtitle">Tough-Love Sparring Partner</div>
+                    </div>
+                </div>
+                <ul class="focus-list">
+                    <li class="focus-item"><strong>Translational Reality Check:</strong> Potency in cell-free assays must translate to cellular activity and oral bioavailability ($F$).</li>
+                    <li class="focus-item"><strong>Synthetic Viability:</strong> Don't spend 14 steps producing 5 mg of compound when an optimized 4-step analog delivers the same efficacy.</li>
+                </ul>
+                <div class="highlight-box">
+                    <strong>Mentor's View:</strong> "Enzyme potency without oral bioavailability ($F > 30\%$) is a dead end. Solve for ADME and route efficiency first!"
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- TAB 2: Drug-Likeness Calculator -->
+    <div id="tab-calculator" class="tab-content">
+        <div class="calc-container">
+            <h2 style="font-family: 'Outfit', sans-serif; margin-bottom: 0.5rem; color: #fff;">Lipinski Rule of 5 & Drug-Likeness Calculator</h2>
+            <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 1.5rem;">
+                Evaluate small molecule drug-likeness criteria (Lipinski Ro5, Veber Parameters, and $f_{\text{sp3}}$).
+            </p>
+            
+            <div class="calc-grid">
+                <div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="mol-mw">Molecular Weight ($\text{MW} \le 500$):</label>
+                            <input type="number" id="mol-mw" value="412" step="5" oninput="calculateRo5()">
+                        </div>
+                        <div class="form-group">
+                            <label for="mol-logp">LogP ($1 \le \text{LogP} \le 5$):</label>
+                            <input type="number" id="mol-logp" value="3.2" step="0.1" oninput="calculateRo5()">
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="mol-hbd">H-Bond Donors ($\text{HBD} \le 5$):</label>
+                            <input type="number" id="mol-hbd" value="2" step="1" oninput="calculateRo5()">
+                        </div>
+                        <div class="form-group">
+                            <label for="mol-hba">H-Bond Acceptors ($\text{HBA} \le 10$):</label>
+                            <input type="number" id="mol-hba" value="6" step="1" oninput="calculateRo5()">
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="mol-tpsa">TPSA ($\text{TPSA} \le 140\ \text{\AA}^2$):</label>
+                            <input type="number" id="mol-tpsa" value="78" step="2" oninput="calculateRo5()">
+                        </div>
+                        <div class="form-group">
+                            <label for="mol-nrotb">Rotatable Bonds ($\text{nRotB} \le 10$):</label>
+                            <input type="number" id="mol-nrotb" value="5" step="1" oninput="calculateRo5()">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="mol-fsp3">Fraction $\text{sp}^3$ ($f_{\text{sp3}} \ge 0.35$):</label>
+                        <input type="number" id="mol-fsp3" value="0.42" step="0.05" oninput="calculateRo5()">
+                    </div>
+                </div>
+                
+                <div class="calc-result-box">
+                    <div style="font-size: 0.85rem; color: var(--text-muted); text-transform: uppercase;">Lead Property Assessment</div>
+                    <div id="ro5-badge" class="status-badge badge-pass">Drug-Like Candidate</div>
+                    <div id="ro5-summary" style="font-size: 0.95rem; color: var(--text-main); margin-bottom: 0.5rem;">Passes Lipinski & Veber Criteria</div>
+                    
+                    <div class="metric-list">
+                        <div class="metric-row">
+                            <span>Lipinski Ro5 Violations:</span>
+                            <strong id="m-ro5">0 Violations</strong>
+                        </div>
+                        <div class="metric-row">
+                            <span>Veber Parameters (TPSA / nRotB):</span>
+                            <strong id="m-veber">Pass</strong>
+                        </div>
+                        <div class="metric-row">
+                            <span>Complexity ($f_{\text{sp3}}$ Score):</span>
+                            <strong id="m-fsp3">Good (0.42)</strong>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- TAB 3: Analytical Matrix -->
+    <div id="tab-matrix" class="tab-content">
+        <div class="table-card">
+            <h2 style="font-family: 'Outfit', sans-serif; margin-bottom: 1rem; color: #fff;">Analytical & In Vitro ADME Verification Matrix</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Category</th>
+                        <th>Required Dossier Parameter</th>
+                        <th>Standard Assay / Method</th>
+                        <th>Priority</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Structure & Purity</strong></td>
+                        <td>$^{1}\text{H}/^{13}\text{C}$ NMR, HRMS, HPLC Purity (>95%)</td>
+                        <td>LC-MS/UV (254nm), High-Res Mass Spec</td>
+                        <td><span class="status-pill pill-required">Required</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Stereochemistry</strong></td>
+                        <td>Chiral Enantiomeric Excess ($\%ee > 98\%$)</td>
+                        <td>Chiral HPLC / SFC</td>
+                        <td><span class="status-pill pill-critical">Critical</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Target Potency</strong></td>
+                        <td>$IC_{50}, EC_{50}, K_i, K_d$</td>
+                        <td>Biochemical Assay, Radioligand Binding, SPR</td>
+                        <td><span class="status-pill pill-required">Required</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Solubility</strong></td>
+                        <td>Thermodynamic Solubility (pH 2.0 & pH 7.4)</td>
+                        <td>Shake-Flask HPLC Assay</td>
+                        <td><span class="status-pill pill-critical">Critical</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Permeability</strong></td>
+                        <td>Membrane Permeability ($P_{app}$) & Efflux Ratio</td>
+                        <td>PAMPA / Caco-2 / MDCK Assay</td>
+                        <td><span class="status-pill pill-critical">Critical</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Metabolic Clearance</strong></td>
+                        <td>Intrinsic Clearance ($CL_{int}$)</td>
+                        <td>Human & Rat Microsomes / Hepatocytes</td>
+                        <td><span class="status-pill pill-critical">Critical</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Cardiotoxicity</strong></td>
+                        <td>hERG Potassium Channel Inhibition</td>
+                        <td>Manual / Automated Patch-Clamp ($IC_{50} > 10\ \mu\text{M}$)</td>
+                        <td><span class="status-pill pill-required">Required</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- TAB 4: Checklist -->
+    <div id="tab-checklist" class="tab-content">
+        <div class="table-card">
+            <h2 style="font-family: 'Outfit', sans-serif; margin-bottom: 1rem; color: #fff;">Pre-Synthesis Small Molecule Audit Checklist</h2>
+            <div class="checklist-grid">
+                <label class="check-item">
+                    <input type="checkbox" checked>
+                    <div class="check-text">
+                        <strong>1. Lipinski & Veber Compliance</strong>
+                        <span>Does the lead fit drug-like space ($\text{MW} \le 500, \text{LogP} \le 5, \text{TPSA} \le 140$)?</span>
+                    </div>
+                </label>
+
+                <label class="check-item">
+                    <input type="checkbox" checked>
+                    <div class="check-text">
+                        <strong>2. Step Economy ($\le 6$ Steps)</strong>
+                        <span>Can the core scaffold be synthesized in 6 linear steps or fewer?</span>
+                    </div>
+                </label>
+
+                <label class="check-item">
+                    <input type="checkbox">
+                    <div class="check-text">
+                        <strong>3. Divergent Intermediate</strong>
+                        <span>Is there a single advanced intermediate for library diversification?</span>
+                    </div>
+                </label>
+
+                <label class="check-item">
+                    <input type="checkbox">
+                    <div class="check-text">
+                        <strong>4. Reactive Metabolite & PAINS Filter</strong>
+                        <span>Is the structure free of anilines, catechols, quinones, or PAINS motifs?</span>
+                    </div>
+                </label>
+
+                <label class="check-item">
+                    <input type="checkbox">
+                    <div class="check-text">
+                        <strong>5. hERG Risk Screening</strong>
+                        <span>Does the compound avoid basic amine ($\text{p}K_a > 8.5$) + lipophilic tail combos?</span>
+                    </div>
+                </label>
+
+                <label class="check-item">
+                    <input type="checkbox">
+                    <div class="check-text">
+                        <strong>6. Intellectual Property (FTO)</strong>
+                        <span>Has a patent search confirmed Freedom to Operate outside Markush claims?</span>
+                    </div>
+                </label>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        Small Molecule / Drug Design Dossier Guide &bull; Designed for Medicinal Chemists &bull; Aganitha Cognitive Framework
+    </footer>
+</div>
+
+<script>
+    function switchTab(tabId) {
+        document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+        document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+        
+        event.currentTarget.classList.add('active');
+        document.getElementById('tab-' + tabId).classList.add('active');
+    }
+
+    function calculateRo5() {
+        const mw = parseFloat(document.getElementById('mol-mw').value) || 0;
+        const logp = parseFloat(document.getElementById('mol-logp').value) || 0;
+        const hbd = parseFloat(document.getElementById('mol-hbd').value) || 0;
+        const hba = parseFloat(document.getElementById('mol-hba').value) || 0;
+        const tpsa = parseFloat(document.getElementById('mol-tpsa').value) || 0;
+        const nrotb = parseFloat(document.getElementById('mol-nrotb').value) || 0;
+        const fsp3 = parseFloat(document.getElementById('mol-fsp3').value) || 0;
+
+        let ro5Violations = 0;
+        if (mw > 500) ro5Violations++;
+        if (logp > 5) ro5Violations++;
+        if (hbd > 5) ro5Violations++;
+        if (hba > 10) ro5Violations++;
+
+        const veberPass = (tpsa <= 140 && nrotb <= 10);
+
+        const badgeElem = document.getElementById('ro5-badge');
+        const summaryElem = document.getElementById('ro5-summary');
+        const mRo5 = document.getElementById('m-ro5');
+        const mVeber = document.getElementById('m-veber');
+        const mFsp3 = document.getElementById('m-fsp3');
+
+        mRo5.innerText = ro5Violations === 0 ? "0 Violations (Pass)" : `${ro5Violations} Violation(s)`;
+        mVeber.innerText = veberPass ? "Pass (TPSA ≤ 140, nRotB ≤ 10)" : "Fail (High TPSA / RotB)";
+        mFsp3.innerText = fsp3 >= 0.35 ? `Good (${fsp3.toFixed(2)})` : `Low (${fsp3.toFixed(2)} - Flat Structure)`;
+
+        if (ro5Violations === 0 && veberPass) {
+            badgeElem.className = "status-badge badge-pass";
+            badgeElem.innerText = "Drug-Like Lead";
+            summaryElem.innerText = "Passes Lipinski Ro5 & Veber Criteria";
+        } else if (ro5Violations === 1 || !veberPass) {
+            badgeElem.className = "status-badge badge-warn";
+            badgeElem.innerText = "Needs Optimization";
+            summaryElem.innerText = "Minor Drug-Likeness / ADME Risk";
+        } else {
+            badgeElem.className = "status-badge badge-fail";
+            badgeElem.innerText = "Ro5 Violation Alert";
+            summaryElem.innerText = "High Risk for Poor Oral Absorption";
+        }
+    }
+
+    // Initial calculation on page load
+    window.addEventListener('DOMContentLoaded', () => {
+        calculateRo5();
+    });
+</script>
+
+</body>
+</html>
